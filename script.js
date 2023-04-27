@@ -28,9 +28,6 @@ listContainer.addEventListener('click', function (e) {
     }
 }, false);
 
-// Get the input field
-// var input = document.getElementById('input__box');
-
 // Execute a function when the user presses a key on the keyboard
 inputBox.addEventListener('keypress', function(event) {
   // If the user presses the "Enter" key on the keyboard
