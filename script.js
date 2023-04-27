@@ -1,0 +1,51 @@
+const inputBox = document.getElementById('input__box');
+const listContainer = document.getElementById('list__container');
+
+function addTask() {
+    if (inputBox.value === '') {
+        alert('You must add a task');
+    } else {
+        let li = document.createElement('li');
+        li.innerHTML = inputBox.value;
+        listContainer.appendChild(li);
+        let span = document.createElement('span');
+        span.innerHTML = '\u00d7';
+        li .appendChild(span);
+
+    }
+    inputBox.value = '';
+    saveData();
+}
+
+listContainer.addEventListener('click', function (e) {
+    if(e.target.tagName === 'LI') {
+        e.target.classList.toggle('checked');
+        saveData();
+    }
+    else if(e.target.tagName === 'SPAN') {
+        e.target.parentElement.remove();
+        saveData();
+    }
+}, false);
+
+// Get the input field
+// var input = document.getElementById('input__box');
+
+// Execute a function when the user presses a key on the keyboard
+inputBox.addEventListener('keypress', function(event) {
+  // If the user presses the "Enter" key on the keyboard
+  if (event.key === 'Enter') {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    document.getElementById('myBtn').click();
+  }
+});
+
+function saveData() {
+    localStorage.setItem('data', listContainer.innerHTML);
+}
+function showTask(){
+    listContainer.innerHTML = localStorage.getItem('data');
+}
+showTask();
