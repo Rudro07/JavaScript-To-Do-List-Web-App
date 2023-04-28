@@ -11,6 +11,7 @@ function addTask() {
         let span = document.createElement('span');
         span.innerHTML = '\u00d7';
         li .appendChild(span);
+        // span.style.paddingLeft= '10px';
 
     }
     inputBox.value = '';
